@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/LottieLogo"
+        android:id="@+id/LottieBeer"
         android:layout_width="250dp"
         android:layout_height="250dp"
         app:lottie_autoPlay="true"
@@ -24,16 +24,18 @@
         android:fontFamily="@font/chewy"
         android:gravity="center"
         android:padding="3dp"
-        android:text="tyBeer"
-        android:textSize="80sp" />
+        android:text="@string/app_name"
+        android:textSize="80sp"
+        android:textColor="@color/brown_dark"/>
 
     <TextView
         android:id="@+id/textViewSottoTitolo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/allan"
+        android:fontFamily="@font/ranga"
         android:gravity="center"
         android:text="@string/str_welcome"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textColor="@color/brown_dark"/>
 
 </LinearLayout>

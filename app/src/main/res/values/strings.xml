@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">tyBeer</string>
     <string name="str_welcome">Benvenuto!</string>
+    <string name="str_emailLogin">indirizzo email</string>
+    <string name="str_paxLogin">password</string>
+    <string name="str_errorEmail">Indirizzo email non valido</string>
+    <string name="str_errorPax">Password non valida</string>
+    <string name="str_btnLogin">Login</string>
+    <string name="str_btnRegister">Registrati</string>
 </resources>
