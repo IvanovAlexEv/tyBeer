@@ -2,8 +2,8 @@
 <resources>
     <string name="app_name">tyBeer</string>
     <string name="str_welcome">Welcome!</string>
-    <string name="str_emailLoginRegister">email address</string>
-    <string name="str_paxLoginRegister">password</string>
+    <string name="str_emailLogin">email address</string>
+    <string name="str_paxLogin">password</string>
     <string name="str_errorEmail">Email address is not valid</string>
     <string name="str_errorPax">Password is not valid</string>
     <string name="str_btnLogin">Login</string>
@@ -12,4 +12,6 @@
     <string name="str_paxRepeat">repeat the password</string>
     <string name="str_infoPax">**The password must be at least 8 characters long and must contain at least one capital letter and at least one number.</string>
     <string name="str_infoEmail">*Please enter a valid email address</string>
+    <string name="str_emailRegister">email address *</string>
+    <string name="str_paxRegister">password **</string>
 </resources>

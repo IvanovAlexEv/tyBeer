@@ -12,46 +12,96 @@
         android:layout_width="wrap_content"
         android:layout_height="600dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/bubbles"
         tools:ignore="MissingConstraints" />
 
-    <ImageView
-        android:id="@+id/imageView_logo"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/LottieBubbles2"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/bubbles"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        app:barrierDirection="right"
+        app:constraint_referenced_ids="textView_logo,imageView_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
         android:src="@mipmap/ic_launcher"
-        app:layout_constraintBottom_toTopOf="@+id/editText_UsernameRegister"
-        app:layout_constraintEnd_toStartOf="@+id/textView_logo"
-        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/textView_logo"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/textView_logo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:fontFamily="@font/chewy"
+        android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/brown_dark"
         android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView_logo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_logo"
-        app:layout_constraintTop_toTopOf="@+id/imageView_logo" />
+        app:layout_constraintBottom_toBottomOf="@id/textView_infoEmail"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_logo" />
+
+    <TextView
+        android:id="@+id/textView_infoEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cabin"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="@string/str_infoEmail"
+        android:textColor="@color/brown_dark"
+        app:layout_constraintBottom_toTopOf="@+id/textView_infoPax"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_logo"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView_infoPax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/cabin"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:text="@string/str_infoPax"
+        android:textColor="@color/brown_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/barrier"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_infoEmail" />
 
     <EditText
         android:id="@+id/editText_UsernameRegister"
         style="@style/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
         android:layout_marginBottom="8dp"
         android:drawableLeft="@drawable/ic_username"
         android:drawablePadding="6dp"
@@ -59,8 +109,9 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/editText_emailRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView_logo" />
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <EditText
         android:id="@+id/editText_emailRegister"
@@ -74,7 +125,7 @@
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/editText_paxRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
         app:layout_constraintTop_toBottomOf="@id/editText_UsernameRegister" />
 
     <EditText
@@ -89,7 +140,7 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/editText_paxRegisterRepeat"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
         app:layout_constraintTop_toBottomOf="@id/editText_emailRegister" />
 
     <EditText
@@ -103,7 +154,7 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/button_register"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
         app:layout_constraintTop_toBottomOf="@id/editText_paxRegister" />
 
     <Button
@@ -111,8 +162,8 @@
         style="@style/button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/str_btnLogin"
         android:onClick="openLogin"
+        android:text="@string/str_btnLogin"
         app:layout_constraintBottom_toBottomOf="@+id/button_register"
         app:layout_constraintEnd_toStartOf="@id/button_register"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -128,40 +179,9 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="35dp"
         android:text="@string/str_btnRegister"
-        app:layout_constraintBottom_toTopOf="@id/textView_infoEmail"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText_paxRegisterRepeat"
         app:layout_constraintStart_toEndOf="@+id/button_login"
         app:layout_constraintTop_toBottomOf="@+id/editText_paxRegisterRepeat" />
-
-    <TextView
-        android:id="@+id/textView_infoEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/str_infoEmail"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/cabin"
-        android:textColor="@color/brown_dark"
-        app:layout_constraintEnd_toEndOf="@id/editText_emailRegister"
-        app:layout_constraintStart_toStartOf="@id/editText_emailRegister"
-        app:layout_constraintTop_toBottomOf="@id/button_register"
-        app:layout_constraintBottom_toTopOf="@+id/textView_infoPax" />
-
-    <TextView
-        android:id="@+id/textView_infoPax"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/str_infoPax"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/cabin"
-        android:textColor="@color/brown_dark"
-        app:layout_constraintEnd_toEndOf="@id/editText_paxRegister"
-        app:layout_constraintStart_toStartOf="@id/editText_paxRegister"
-        app:layout_constraintTop_toBottomOf="@id/textView_infoEmail"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
