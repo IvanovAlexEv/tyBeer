@@ -1,5 +1,6 @@
 package Package.tyBeer
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -29,6 +30,11 @@ class LoginActivity : AppCompatActivity() {
         return matcher.matches()
     }
     private fun isValidPassword(pax:String?):Boolean {
-        return (pax != null && pax.length>=4)
+        return (pax != null && pax.length>=8)
+    }
+
+    fun openRegister(v:View){
+        val intentHome = Intent(this@LoginActivity, SigninActivity::class.java)
+        startActivity(intentHome)
     }
 }

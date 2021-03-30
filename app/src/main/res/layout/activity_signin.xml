@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yellow"
+    tools:context=".SigninActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/LottieBubbles"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/bubbles"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/imageView_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:src="@mipmap/ic_launcher"
+        app:layout_constraintBottom_toTopOf="@+id/editText_UsernameRegister"
+        app:layout_constraintEnd_toStartOf="@+id/textView_logo"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/chewy"
+        android:text="@string/app_name"
+        android:textColor="@color/brown_dark"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView_logo"
+        app:layout_constraintTop_toTopOf="@+id/imageView_logo" />
+
+    <EditText
+        android:id="@+id/editText_UsernameRegister"
+        style="@style/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="8dp"
+        android:drawableLeft="@drawable/ic_username"
+        android:drawablePadding="6dp"
+        android:hint="@string/str_usernameRegister"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editText_emailRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView_logo" />
+
+    <EditText
+        android:id="@+id/editText_emailRegister"
+        style="@style/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:drawableLeft="@drawable/ic_email"
+        android:drawablePadding="6dp"
+        android:hint="@string/str_emailLoginRegister"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/textView_infoEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editText_UsernameRegister" />
+
+    <TextView
+        android:id="@+id/textView_infoEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/str_infoEmail"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/cabin"
+        android:textColor="@color/brown_dark"
+        app:layout_constraintEnd_toEndOf="@id/editText_emailRegister"
+        app:layout_constraintStart_toStartOf="@id/editText_emailRegister"
+        app:layout_constraintTop_toBottomOf="@id/editText_emailRegister"
+        app:layout_constraintBottom_toTopOf="@+id/editText_paxRegister"/>
+
+    <EditText
+        android:id="@+id/editText_paxRegister"
+        style="@style/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="6dp"
+        android:hint="@string/str_paxLoginRegister"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/textView_infoPax"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_infoEmail" />
+
+    <TextView
+        android:id="@+id/textView_infoPax"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/str_infoPax"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/cabin"
+        android:textColor="@color/brown_dark"
+        app:layout_constraintEnd_toEndOf="@id/editText_paxRegister"
+        app:layout_constraintStart_toStartOf="@id/editText_paxRegister"
+        app:layout_constraintTop_toBottomOf="@id/editText_paxRegister"
+        app:layout_constraintBottom_toTopOf="@+id/editText_paxRegisterRepeat"/>
+
+    <EditText
+        android:id="@+id/editText_paxRegisterRepeat"
+        style="@style/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_password"
+        android:drawablePadding="6dp"
+        android:hint="@string/str_paxRepeat"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/button_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_infoPax" />
+
+    <Button
+        android:id="@+id/button_login"
+        style="@style/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/str_btnLogin"
+        android:onClick="openLogin"
+        app:layout_constraintBottom_toBottomOf="@+id/button_register"
+        app:layout_constraintEnd_toStartOf="@id/button_register"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/editText_paxRegisterRepeat"
+        app:layout_constraintTop_toTopOf="@+id/button_register" />
+
+    <Button
+        android:id="@+id/button_register"
+        style="@style/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="35dp"
+        android:text="@string/str_btnRegister"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editText_paxRegisterRepeat"
+        app:layout_constraintStart_toEndOf="@+id/button_login"
+        app:layout_constraintTop_toBottomOf="@+id/editText_paxRegisterRepeat" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
