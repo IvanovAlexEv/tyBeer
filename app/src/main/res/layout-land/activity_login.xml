@@ -103,6 +103,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/str_btnRegister"
+        android:onClick="openRegister"
         app:layout_constraintBottom_toBottomOf="@+id/button_login"
         app:layout_constraintEnd_toStartOf="@id/button_login"
         app:layout_constraintHorizontal_chainStyle="packed"

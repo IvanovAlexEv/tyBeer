@@ -4,13 +4,20 @@
     <string name="str_emailLogin">indirizzo email</string>
     <string name="str_paxLogin">password</string>
     <string name="str_errorEmail">Indirizzo email non valido</string>
-    <string name="str_errorPax">Password non valida</string>
     <string name="str_btnLogin">Login</string>
     <string name="str_btnRegister">Registrati</string>
     <string name="str_usernameRegister">nome utente</string>
     <string name="str_paxRepeat">ripetere la password</string>
-    <string name="str_infoPax">**La password deve essere composta da almeno 8 caratteri e deve contenere almeno una maiuscola e almeno un numero.</string>
-    <string name="str_infoEmail">*Inserire un indirizzo email valido</string>
-    <string name="str_emailRegister">indirizzo email *</string>
-    <string name="str_paxRegister">password **</string>
+    <string name="str_errorPax">La password deve essere composta da almeno 8 caratteri e deve contenere almeno una maiuscola e almeno un numero.</string>
+    <string name="str_emailRegister">indirizzo email</string>
+    <string name="str_paxRegister">password</string>
+    <string name="str_errorUsernameNotFree">Username già utilizzato</string>
+    <string name="str_errorEmailNotFree">Indirizzo email già utilizzato</string>
+    <string name="str_errorUsername">L\'username deve avere almeno 4 caratteri e non può contenere spazi o caratteri speciali</string>
+    <string name="str_errorPaxEquals">Le password non combaciano</string>
+    <string name="str_errorEmailNotFound">L\'email non è stata trovata</string>
+    <string name="str_errorPaxNotMatch">Password errata</string>
+    <string name="str_NameRegister">Nome</string>
+    <string name="str_SurnameRegister">Cognome</string>
+    <string name="str_errorNameOrSurname">Compilare il campo</string>
 </resources>

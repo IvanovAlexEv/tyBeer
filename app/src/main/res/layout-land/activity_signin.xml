@@ -56,46 +56,15 @@
         android:id="@+id/textView_logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
         android:fontFamily="@font/chewy"
         android:gravity="center"
         android:text="@string/app_name"
         android:textColor="@color/brown_dark"
         android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@id/textView_infoEmail"
-        app:layout_constraintEnd_toStartOf="@id/barrier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_logo" />
-
-    <TextView
-        android:id="@+id/textView_infoEmail"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/cabin"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:text="@string/str_infoEmail"
-        android:textColor="@color/brown_dark"
-        app:layout_constraintBottom_toTopOf="@+id/textView_infoPax"
-        app:layout_constraintEnd_toStartOf="@id/barrier"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_logo"
-        app:layout_constraintVertical_chainStyle="packed" />
-
-    <TextView
-        android:id="@+id/textView_infoPax"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="@font/cabin"
-        android:paddingLeft="40dp"
-        android:paddingRight="40dp"
-        android:text="@string/str_infoPax"
-        android:textColor="@color/brown_dark"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_infoEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_logo" />
 
     <EditText
         android:id="@+id/editText_UsernameRegister"
@@ -107,11 +76,40 @@
         android:drawablePadding="6dp"
         android:hint="@string/str_usernameRegister"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText_emailRegister"
+        app:layout_constraintBottom_toTopOf="@+id/editText_NameRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/barrier"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/editText_NameRegister"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:drawablePadding="6dp"
+        android:hint="@string/str_NameRegister"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/editText_emailRegister"
+        app:layout_constraintEnd_toStartOf="@id/editText_SurnameRegister"
+        app:layout_constraintStart_toStartOf="@id/editText_UsernameRegister"
+        app:layout_constraintTop_toBottomOf="@id/editText_UsernameRegister" />
+
+    <EditText
+        android:id="@+id/editText_SurnameRegister"
+        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:layout_marginLeft="3dp"
+        android:drawablePadding="6dp"
+        android:hint="@string/str_SurnameRegister"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_NameRegister"
+        app:layout_constraintEnd_toEndOf="@id/editText_UsernameRegister"
+        app:layout_constraintStart_toEndOf="@id/editText_NameRegister"
+        app:layout_constraintTop_toTopOf="@id/editText_NameRegister" />
 
     <EditText
         android:id="@+id/editText_emailRegister"
@@ -126,7 +124,7 @@
         app:layout_constraintBottom_toTopOf="@+id/editText_paxRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/barrier"
-        app:layout_constraintTop_toBottomOf="@id/editText_UsernameRegister" />
+        app:layout_constraintTop_toBottomOf="@id/editText_NameRegister" />
 
     <EditText
         android:id="@+id/editText_paxRegister"
@@ -177,8 +175,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:text="@string/str_btnRegister"
+        android:onClick="checkRegister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText_paxRegisterRepeat"
         app:layout_constraintStart_toEndOf="@+id/button_login"
