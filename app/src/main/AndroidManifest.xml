@@ -20,10 +20,10 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.start"></activity>
+            android:theme="@style/Theme.start" />
         <activity
             android:name=".SigninActivity"
-            android:theme="@style/Theme.start"></activity>
+            android:theme="@style/Theme.start" />
     </application>
 
 </manifest>
