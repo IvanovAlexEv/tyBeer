@@ -8,16 +8,67 @@
     <string name="str_btnRegister">Registrati</string>
     <string name="str_usernameRegister">nome utente</string>
     <string name="str_paxRepeat">ripetere la password</string>
-    <string name="str_errorPax">La password deve essere composta da almeno 8 caratteri e deve contenere almeno una maiuscola e almeno un numero.</string>
+    <string name="str_errorPax">La password deve essere composta da almeno 8 caratteri e deve contenere almeno una maiuscola e almeno un numero. Non deve contenere spazi.</string>
     <string name="str_emailRegister">indirizzo email</string>
     <string name="str_paxRegister">password</string>
     <string name="str_errorUsernameNotFree">Username già utilizzato</string>
     <string name="str_errorEmailNotFree">Indirizzo email già utilizzato</string>
     <string name="str_errorUsername">L\'username deve avere almeno 4 caratteri e non può contenere spazi o caratteri speciali</string>
     <string name="str_errorPaxEquals">Le password non combaciano</string>
-    <string name="str_errorEmailNotFound">L\'email non è stata trovata</string>
-    <string name="str_errorPaxNotMatch">Password errata</string>
+    <string name="str_errorNotFound">Utente non trovato, ricontrollare l\'email e la password</string>
     <string name="str_NameRegister">Nome</string>
     <string name="str_SurnameRegister">Cognome</string>
     <string name="str_errorNameOrSurname">Compilare il campo</string>
+    <string name="str_NewPax">Password dimenticata? clicca qui.</string>
+    <string name="str_TitleNewPax">Password dimenticata?</string>
+    <string name="str_MessageNewPax">Inserisci la tua email, riceverai un link per reimpostare la password.</string>
+    <string name="str_Chiudi">Chiudi</string>
+    <string name="str_Invia">Invia</string>
+    <string name="str_EmailVerifSent">Email di verifica inviata.</string>
+    <string name="str_Aggiorna">Aggiorna</string>
+    <string name="str_TextWaitEmailConf1">Prima di accedere all\'app dobbiamo verificare il tuo indirizzo email fornito in fase di registrazione.\nL\'indirizzo in questione è:</string>
+    <string name="str_TextWaitEmailConf2">Se non hai ricevuto nessuna email:</string>
+    <string name="str_click">clicca qui</string>
+    <string name="str_Logout">Logout</string>
+
+    <string name="BeerGeneralIntroTitle">La birra…</string>
+    <string name="BeerGeneralIntro">Una prima grande suddivisione viene comunemente effettuata a seconda del tipo di lievito utilizzato, distinguendo tra birre ad alta fermentazione, le Ale, come le tradizionali anglosassoni o belghe, e le birre a bassa fermentazione, le Lager, dove trovano posto, tra le altre, birre tedesche famose come pils o le ambrate bock. Non bisogna dimenticare una terza macro categoria, meno nota al bevitore medio, delle birre a fermentazione spontanea, come lo straordinario Lambic belga, prodotto grazie all’azione dei lieviti presenti nell’aria che aggrediscono gli zuccheri del mosto lasciato riposare in vasche aperte.</string>
+
+    <string-array name="MainTypeOfBeerList">
+        <item>Lager</item>
+        <item>Ale</item>
+        <item>Lambic</item>
+        <item>Particolari</item>
+    </string-array>
+
+    <string name="LagerBeerDesc">Si tratta di una birra a bassa fermentazione, ossia quelle birre prodotte con lieviti del ceppo Saccharomyces carlsbergensis che preferiscono temperature basse (circa 10°C). Durante il processo il lievito si va a depositare sul fondo del tino – da qui prende il nome di bassa fermentazione.\nLa parola Lager deriva dal tedesco e significa “magazzino”. Si riferisce alla pratica di stoccare la birra in un luogo molto freddo per un periodo che va da 1 a 3 mesi per favorire la decantazione delle sostanze al suo interno, migliorare la limpidezza e stabilizzare il gusto. Questo processo si chiama appunto “lagerizzazione“.\nÈ una birra leggera con un volume alcolico intorno ai 4% e 5.5% e regala aromi di malto, cereali, miele e pane. Ha un colore chiaro, limpido e trasparente ed una schiuma bianca, con bollicine che salgono verso la superficie. Il suggerimento è quello di berla molto fresca per poter gustare al meglio le sue caratteristiche. Una cosa molto importante è che con il termine Lager ci si riferisce principalmente al metodo di produzione a bassa fermantazione e non ad uno stile vero e proprio.</string>
+    <string name="AleBeerDesc">Le Ale sono birre ad alta fermentazione, prodotte utilizzando lieviti del ceppo Saccharomyces cerevisiae, che si attivano a temperature relativamente elevate (12–23°C), hanno un processo fermentativo piuttosto rapido e la caratteristica che i lieviti salgono alla superficie del mosto in fermentazione (da cui il nome “alta fermentazione”)\nLe birre Ale hanno come caratteristica comune un sapore rotondo, un corpo pieno, una tendenza dolce più o meno marcata e aromi particolarmente fruttati. Quasi tutte le Ale vengono addizionate di luppolo o erbe aromatiche.</string>
+    <string name="LambicBeerDesc">Al contrario delle ale e lager convenzionali, che sono fatte fermentare utilizzando ceppi di lievito accuratamente selezionati per lo scopo, il lambic è prodotto attraverso fermentazione spontanea: il mosto di birra viene esposto ai lieviti selvatici e ai batteri autoctoni della valle della Senne, in cui si trova Bruxelles. Questo inusuale processo di fermentazione conferisce alle birre di tipo lambic un sapore assolutamente distintivo: secco, vinoso e sidroso, decisamente acido. L\'acidità cambia in funzione del grado d\'invecchiamento, la gradazione alcolica è intorno ai 5°.\nIl lambic può essere consumato da solo, ma per renderne più gradevole il gusto acido si presta ad essere addizionato di sciroppi di frutta, ad esempio utilizzando i lamponi si ottiene la birra framboise, con l\'aggiunta di zucchero si ottiene la faro, con le amarene la kriek. Miscelando invece vari tipi di lambic di diverse annate si produce la geuze.</string>
+    <string name="ParticularBeerDesc">Questa sezione è dedicata a quelle tipologie di birre che non sono classificabili sono uno stile ben preciso.\nSi può definire come una sorta di sotto-categoria, infatti le birre con queste caratteristiche si possono trovare sia di tipo Lager che Ale.</string>
+
+    <string-array name="LagerTypeBeerList">
+        <item>Märzen</item>
+        <item>Dunkel</item>
+        <item>Bock</item>
+        <item>Helles</item>
+        <item>Pilsner</item>
+    </string-array>
+
+    <string-array name="AleTypeBeerList">
+        <item>Pale Ale</item>
+        <item>Barley wine</item>
+        <item>Dark Ale</item>
+        <item>Weizen</item>
+    </string-array>
+
+    <string-array name="ParticularTypeBeerList">
+        <item>Affumicata</item>
+        <item>Trappista</item>
+        <item>Abazia</item>
+        <item>IGA</item>
+    </string-array>
+
+    <!-- TODO: PROVA -->
+
+
 </resources>

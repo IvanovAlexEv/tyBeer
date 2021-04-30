@@ -38,6 +38,20 @@
         <item name="android:paddingRight">10dp</item>
         <item name="android:paddingBottom">10dp</item>
         <item name="android:fontFamily">@font/cabin</item>
+        <item name="android:importantForAutofill" tools:ignore="NewApi">no</item>
+    </style>
+
+    <style name="Normaltext">
+        <item name="android:fontFamily">@font/cabin</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="textViewTitle">
+        <item name="android:fontFamily">@font/chewy</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textColor">@color/brown_dark</item>
+        <item name="android:textSize">60sp</item>
     </style>
 
 </resources>

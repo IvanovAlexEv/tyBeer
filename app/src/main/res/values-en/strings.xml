@@ -9,16 +9,64 @@
     <string name="str_btnRegister">Sign in</string>
     <string name="str_usernameRegister">username</string>
     <string name="str_paxRepeat">repeat the password</string>
-    <string name="str_errorPax">Password must be at least 8 characters long and must contain at least one capital letter and at least one number.</string>
+    <string name="str_errorPax">Password must be at least 8 characters long and must contain at least one capital letter and at least one number. Shall not contain any spaces.</string>
     <string name="str_emailRegister">email address</string>
     <string name="str_paxRegister">password</string>
     <string name="str_errorUsernameNotFree">Username already used</string>
     <string name="str_errorEmailNotFree">Email address already used</string>
     <string name="str_errorUsername">Username must have at least 4 characters and cannot contain spaces or special characters</string>
     <string name="str_errorPaxEquals">Passwords do not match</string>
-    <string name="str_errorEmailNotFound">Email was not found</string>
-    <string name="str_errorPaxNotMatch">Wrong password</string>
+    <string name="str_errorNotFound">User not found, recheck email and password</string>
     <string name="str_NameRegister">Name</string>
     <string name="str_SurnameRegister">Surname</string>
     <string name="str_errorNameOrSurname">Fill in the field</string>
+    <string name="str_NewPax">Forgot your password? click here.</string>
+    <string name="str_TitleNewPax">Forgot your password?</string>
+    <string name="str_MessageNewPax">Enter your email, you will receive a link to reset your password.</string>
+    <string name="str_Chiudi">Close</string>
+    <string name="str_Invia">Send</string>
+    <string name="str_EmailVerifSent">Verification email has been sent.</string>
+    <string name="str_Aggiorna">Refresh</string>
+    <string name="str_TextWaitEmailConf1">Before accessing the app we need to verify your email address provided during registration.\nThe address in question is:</string>
+    <string name="str_TextWaitEmailConf2">If you have not received any email:</string>
+    <string name="str_click">click here</string>
+    <string name="str_Logout">Logout</string>
+
+    <string name="BeerGeneralIntroTitle">Beer…</string>
+    <string name="BeerGeneralIntro">A first large subdivision is commonly carried out depending on the type of yeast used, distinguishing between high fermentation beers, the Ale, as the traditional Anglo-Saxon or Belgian, and low fermentation beers, the Lager, where they find place, among others, famous German beers like pils or ambrate bock. We must not forget a third macro category, less known to the average drinker, of spontaneous fermentation beers, such as the extraordinary Belgian Lambic, produced thanks to the action of the yeasts present in the air that attack the sugars of the must left to rest in open tanks.</string>
+
+    <string-array name="MainTypeOfBeerList">
+        <item>Lager</item>
+        <item>Ale</item>
+        <item>Lambic</item>
+        <item>Particular</item>
+    </string-array>
+
+    <string name="LagerBeerDesc">It is a low-fermentation beer, that is those beers produced with yeasts of the Saccharomyces carlsbergensis strain that prefer low temperatures (about 10 C). During the process the yeast is deposited on the bottom of the vat - hence it is called low fermentation.\nThe word Lager comes from German and means \"warehouse\". It refers to the practice of storing beer in a very cold place for a period of 1 to 3 months to encourage the settling of substances in it, improve clarity and stabilize the taste. This process is called \"lagerization\".\nIt is a light beer with an alcoholic volume of around 4% and 5.5% and gives aromas of malt, cereals, honey and bread. It has a clear, clear and transparent color and a white foam, with bubbles rising towards the surface. The suggestion is to drink it very fresh to be able to enjoy its characteristics. A very important thing is that the term Lager refers mainly to the method of production at low stopping and not to a real style.</string>
+    <string name="AleBeerDesc">Ale are high fermentation beers, produced using yeasts of the strain Saccharomyces cerevisiae, which are activated at relatively high temperatures (12–23 C), have a rather rapid fermentation process and the characteristic that yeasts rise to the surface of the must in fermentation (hence the name \"high fermentation\") Ale beers have a common characteristic of a round taste, a full body, a more or less marked sweet trend and particularly fruity aromas. Almost all Ales are added with hops or herbs.</string>
+    <string name="LambicBeerDesc">In contrast to conventional ale and lager, which are fermented using carefully selected yeast strains for the purpose, lambic is produced by spontaneous fermentation: beer must is exposed to wild yeasts and native bacteria from the Seine Valley, where Brussels is located. This unusual fermentation process gives lambic beers an absolutely distinctive taste: dry, vinous and cider, decidedly acidic. The acidity changes depending on the degree of aging, the alcohol content is around 5%.\nLambic can be consumed alone, but to make it more pleasant the sour taste lends itself to be added to fruit syrups, for example by using raspberries you get the Framboise beer, with the addition of sugar you get the lighthouse, with sour cherries kriek. By mixing various types of lambic of different years, geuze is produced.</string>
+    <string name="ParticularBeerDesc">This section is dedicated to those types of beers that are not classifiable are a very precise style.\nIt can be defined as a kind of sub-category, in fact beers with these characteristics can be found both Lager and Ale.</string>
+
+    <string-array name="LagerTypeBeerList">
+        <item>Märzen</item>
+        <item>Dunkel</item>
+        <item>Bock</item>
+        <item>Helles</item>
+        <item>Pilsner</item>
+    </string-array>
+
+    <string-array name="AleTypeBeerList">
+        <item>Pale Ale</item>
+        <item>Barley wine</item>
+        <item>Dark Ale</item>
+        <item>Weizen</item>
+    </string-array>
+
+    <string-array name="ParticularTypeBeerList">
+        <item>Rauchbier</item>
+        <item>Trappist</item>
+        <item>Abbey</item>
+        <item>IGA</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/yellow"
+    android:padding="20dp"
+    tools:context=".WaitingEmailActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/LottieBubbles"
+        android:layout_width="wrap_content"
+        android:layout_height="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/bubbles"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView_logo"
+        style="@style/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView_text1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView_text1"
+        style="@style/Normaltext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/str_TextWaitEmailConf1"
+        android:textColor="@color/brown_dark"
+        android:layout_marginTop="65dp"
+        app:layout_constraintBottom_toTopOf="@id/textView_emailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_logo" />
+
+    <TextView
+        android:id="@+id/textView_emailAddress"
+        style="@style/Normaltext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/brown_dark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/textView_text2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_text1" />
+
+    <TextView
+        android:id="@+id/textView_text2"
+        style="@style/Normaltext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/str_TextWaitEmailConf2"
+        android:textColor="@color/brown_dark"
+        android:layout_marginTop="7dp"
+        app:layout_constraintBottom_toTopOf="@id/textView_SendNewEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_emailAddress" />
+
+    <TextView
+        android:id="@+id/textView_SendNewEmail"
+        style="@style/Normaltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/str_click"
+        android:textColor="@color/brown_dark"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        android:layout_marginBottom="60dp"
+        android:onClick="onSendNewEmail"
+        app:layout_constraintBottom_toTopOf="@id/textView_reload"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_text2" />
+
+    <TextView
+        android:id="@+id/textView_reload"
+        style="@style/Normaltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:onClick="onReload"
+        android:text="@string/str_Aggiorna"
+        android:textColor="@color/brown_dark"
+        android:textSize="25sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_SendNewEmail" />
+
+    <LinearLayout
+        android:id="@+id/LottieLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_reload">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/LottieLoad"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="false"
+            app:lottie_rawRes="@raw/load"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_Logout"
+        style="@style/Normaltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:onClick="onLogOut"
+        android:text="@string/str_Logout"
+        android:textColor="@color/brown_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

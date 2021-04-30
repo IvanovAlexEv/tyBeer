@@ -56,11 +56,8 @@
         android:id="@+id/textView_logo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/chewy"
         android:gravity="center"
-        android:text="@string/app_name"
-        android:textColor="@color/brown_dark"
-        android:textSize="60sp"
+        style="@style/textViewTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/barrier"
         app:layout_constraintStart_toStartOf="parent"
@@ -125,5 +122,19 @@
         app:layout_constraintStart_toEndOf="@+id/button_register"
         app:layout_constraintTop_toBottomOf="@+id/editText_paxLogin" />
 
+    <TextView
+        android:id="@+id/textView_newPax"
+        style="@style/Normaltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textStyle="italic"
+        android:textColor="@color/brown_dark"
+        android:text="@string/str_NewPax"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/barrier"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        android:onClick="openNewPax" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

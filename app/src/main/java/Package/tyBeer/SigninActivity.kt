@@ -1,16 +1,27 @@
 package Package.tyBeer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_signin.*
 import java.util.regex.Pattern
 
 class SigninActivity : AppCompatActivity() {
+
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signin)
+        auth = FirebaseAuth.getInstance();
+    }
+    override fun onStart() {
+        super.onStart()
+        UpdateUI(auth.currentUser)
     }
 
     fun checkRegister(v: View?){
@@ -43,10 +54,6 @@ class SigninActivity : AppCompatActivity() {
             editText_emailRegister.error = getString(R.string.str_errorEmail)
             isAllOkay=false
         }
-        if (!isEmailFree(email)){
-            editText_emailRegister.error = getString(R.string.str_errorEmailNotFree)
-            isAllOkay=false
-        }
         if (!isValidPassword(pax)){
             editText_paxRegister.error = getString(R.string.str_errorPax)
             isAllOkay=false
@@ -56,8 +63,7 @@ class SigninActivity : AppCompatActivity() {
             isAllOkay=false
         }
         if (isAllOkay) {
-            // REGISTRAZIONE...
-            Toast.makeText(this@SigninActivity, "REGISTRAZIONE...", Toast.LENGTH_SHORT).show()
+            RegistrationUser(username, name, surname, email, pax)
         }
     }
     private fun isValidUsername(user:String?):Boolean {
@@ -85,10 +91,6 @@ class SigninActivity : AppCompatActivity() {
         val matcher = pattern.matcher(email)
         return matcher.matches()
     }
-    private fun isEmailFree(email:String):Boolean{
-        //  CONTROLLO DISPONIBILITA' EMAIL
-        return true
-    }
     private fun isValidPassword(pax:String?):Boolean {
         var UpperCase:Boolean=false
         var LowerCase:Boolean=false
@@ -96,6 +98,7 @@ class SigninActivity : AppCompatActivity() {
         var Length:Boolean=false
         if (pax != null) {
             for (i in pax){
+                if (i.equals(" ")) return false
                 if (i.isUpperCase()) UpperCase=true
                 if (i.isLowerCase()) LowerCase=true
                 if (i.isDigit()) Number=true
@@ -104,7 +107,33 @@ class SigninActivity : AppCompatActivity() {
         }
         return ( UpperCase && LowerCase && Number && Length)
     }
+    private fun RegistrationUser(username: String , name: String , surname: String, email: String, pax: String){
+        auth.createUserWithEmailAndPassword(email,pax).addOnCompleteListener(this){ task ->
+            if(task.isSuccessful){
+                val currentUser = auth.currentUser
+                currentUser?.sendEmailVerification()?.addOnSuccessListener {
+                    Toast.makeText(this@SigninActivity, R.string.str_EmailVerifSent, Toast.LENGTH_LONG).show();
+                }?.addOnFailureListener {
+                    Toast.makeText(this@SigninActivity, "Error! Email not sent. " + it.message, Toast.LENGTH_LONG).show();
+                }
+                UpdateUI(currentUser)
+            } else {
+                Toast.makeText(this@SigninActivity, "Error! " + R.string.str_errorEmailNotFree, Toast.LENGTH_SHORT).show();
+                UpdateUI(null)
+            }
+        }
+    }
+    fun UpdateUI(currentUser : FirebaseUser?) {
+        currentUser?.reload()
+        if (currentUser != null){
+            val intentHome = Intent(this@SigninActivity, WaitingEmailActivity::class.java)
+            startActivity(intentHome)
+            finish()
+        }
+    }
     fun openLogin(v: View){
+        val intentHome = Intent(this@SigninActivity, LoginActivity::class.java)
+        startActivity(intentHome)
         finish()
     }
 }

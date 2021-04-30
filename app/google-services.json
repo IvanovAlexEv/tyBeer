@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "291850579991",
+    "project_id": "tybeer-986f9",
+    "storage_bucket": "tybeer-986f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:291850579991:android:24fdaae4355f3bd3142c52",
+        "android_client_info": {
+          "package_name": "Package.tyBeer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "291850579991-9896l0idkk0mprmbfmhnidc4lr0gok19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdvKmyqtEfcT1m0WOp0S8KuJHzWVThh0k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "291850579991-9896l0idkk0mprmbfmhnidc4lr0gok19.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

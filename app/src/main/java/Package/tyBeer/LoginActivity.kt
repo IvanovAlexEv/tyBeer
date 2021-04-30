@@ -1,43 +1,49 @@
 package Package.tyBeer
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.regex.Pattern
 
+
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var auth : FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        auth = FirebaseAuth.getInstance();
     }
+    override fun onStart() {
+        super.onStart()
+        UpdateUI(auth.currentUser)
+    }
+
     fun checkLogin(v: View?){
         val email:String = editText_emailLogin.text.toString()
         val pax:String = editText_paxLogin.text.toString()
-        var emailOkay:Boolean = false
-        if (!isValidEmail(email)){
+        var emailOkay : Boolean = true
+        var paxOkay : Boolean = true
+        if (!isValidEmail(email)) {
             editText_emailLogin.error = getString(R.string.str_errorEmail)
-        } else {
-            if (!isEmailFound(email)){
-                editText_emailLogin.error = getString(R.string.str_errorEmailNotFound)
-            } else {
-                emailOkay = true
-            }
+            emailOkay = false
         }
-        if (!isValidPassword(pax)){
+        if (!isValidPassword(pax)) {
             editText_paxLogin.error = getString(R.string.str_errorPax)
-        } else {
-            if (emailOkay){
-                if (!isPasswordMatch(pax,email)){
-                    editText_paxLogin.error = getString(R.string.str_errorPaxNotMatch)
-                } else {
-                    // LOGIN...
-                    Toast.makeText(this@LoginActivity, "LOGIN...", Toast.LENGTH_SHORT).show()
-                }
-            }
+            paxOkay = false
         }
+        if( !emailOkay || !paxOkay)
+            return
+        isUserFound(pax,email)
     }
     private fun isValidEmail(email:String):Boolean{
         val EMAIL_PATTERN = ("^[_A-Za-z0-9-\\+]+(\\.[_+A-Za-z0-9-]+)*@"
@@ -45,10 +51,6 @@ class LoginActivity : AppCompatActivity() {
         val pattern = Pattern.compile(EMAIL_PATTERN)
         val matcher = pattern.matcher(email)
         return matcher.matches()
-    }
-    private fun isEmailFound(email:String):Boolean{
-        // CONTROLLO ESISTENZA EMAIL
-        return false
     }
     private fun isValidPassword(pax:String?):Boolean {
         var UpperCase: Boolean = false
@@ -65,13 +67,57 @@ class LoginActivity : AppCompatActivity() {
         }
         return (UpperCase && LowerCase && Number && Length)
     }
-    private fun isPasswordMatch(pax:String?, email:String?):Boolean {
-        // CONTROLLO ESISTENZA PASSWORD
-        return false
-    }
 
+    private fun isUserFound(pax:String, email:String) {
+        auth.signInWithEmailAndPassword(email, pax).addOnCompleteListener(this) { task ->
+            if(task.isSuccessful){
+                UpdateUI(auth.currentUser)
+            } else {
+                editText_emailLogin.error = getString(R.string.str_errorNotFound)
+                Toast.makeText(this@LoginActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                UpdateUI(null)
+            }
+        }
+    }
+    fun UpdateUI(currentUser : FirebaseUser?) {
+        currentUser?.reload()
+        if (currentUser != null && currentUser.isEmailVerified){
+            val intentHome = Intent(this@LoginActivity, HomeActivity::class.java)
+            startActivity(intentHome)
+            finish()
+            return
+        }
+        if (currentUser != null && !currentUser.isEmailVerified) {
+            val intentHome = Intent(this@LoginActivity, WaitingEmailActivity::class.java)
+            startActivity(intentHome)
+            finish()
+            return
+        }
+    }
     fun openRegister(v:View){
         val intentHome = Intent(this@LoginActivity, SigninActivity::class.java)
         startActivity(intentHome)
+        finish();
+    }
+    fun openNewPax(v:View){
+        val emailText = EditText(this@LoginActivity)
+        val newPax = AlertDialog.Builder(this@LoginActivity)
+        newPax.setTitle(R.string.str_TitleNewPax)
+        newPax.setMessage(R.string.str_MessageNewPax)
+        newPax.setView(emailText)
+        newPax.setPositiveButton(R.string.str_Invia, DialogInterface.OnClickListener { dialog, which ->
+            var email : String = emailText.text.toString()
+            if (isValidEmail(email)){
+                auth.sendPasswordResetEmail(email).addOnSuccessListener {
+                    Toast.makeText(this@LoginActivity, "Email sent.", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+                    Toast.makeText(this@LoginActivity, "Error! Email not found. " + it.message, Toast.LENGTH_LONG).show()
+                }
+            } else {
+                Toast.makeText(this@LoginActivity, R.string.str_errorEmail, Toast.LENGTH_LONG).show()
+            }
+        })
+        newPax.setNegativeButton(R.string.str_Chiudi, DialogInterface.OnClickListener { dialog, which ->})
+        newPax.create().show()
     }
 }
