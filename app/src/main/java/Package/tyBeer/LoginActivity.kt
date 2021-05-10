@@ -8,9 +8,14 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.lottie.LottieAnimationView
+import com.airbnb.lottie.LottieAnimationView.INVISIBLE
+import com.airbnb.lottie.LottieAnimationView.VISIBLE
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.LottieLoad
+import kotlinx.android.synthetic.main.activity_waiting_email.*
 import java.util.regex.Pattern
 
 
@@ -29,6 +34,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun checkLogin(v: View?){
+        LottieLoad!!.visibility = VISIBLE
+        LottieLoad!!.playAnimation()
         val email:String = editText_emailLogin.text.toString()
         val pax:String = editText_paxLogin.text.toString()
         var emailOkay : Boolean = true
@@ -41,8 +48,11 @@ class LoginActivity : AppCompatActivity() {
             editText_paxLogin.error = getString(R.string.str_errorPax)
             paxOkay = false
         }
-        if( !emailOkay || !paxOkay)
+        if( !emailOkay || !paxOkay) {
+            LottieLoad!!.cancelAnimation()
+            LottieLoad!!.visibility = INVISIBLE
             return
+        }
         isUserFound(pax,email)
     }
     private fun isValidEmail(email:String):Boolean{
@@ -73,13 +83,15 @@ class LoginActivity : AppCompatActivity() {
             if(task.isSuccessful){
                 UpdateUI(auth.currentUser)
             } else {
+                LottieLoad.cancelAnimation()
+                LottieLoad.visibility = INVISIBLE
                 editText_emailLogin.error = getString(R.string.str_errorNotFound)
                 Toast.makeText(this@LoginActivity, "Authentication failed.", Toast.LENGTH_SHORT).show()
                 UpdateUI(null)
             }
         }
     }
-    fun UpdateUI(currentUser : FirebaseUser?) {
+    private fun UpdateUI(currentUser : FirebaseUser?) {
         currentUser?.reload()
         if (currentUser != null && currentUser.isEmailVerified){
             val intentHome = Intent(this@LoginActivity, HomeActivity::class.java)

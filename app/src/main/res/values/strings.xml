@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">tyBeer</string>
     <string name="str_welcome">Benvenuto!</string>
+    <string name="str_EXIT">Premi un\'altra volta per uscire.</string>
     <string name="str_emailLogin">indirizzo email</string>
     <string name="str_paxLogin">password</string>
     <string name="str_errorEmail">Indirizzo email non valido</string>
@@ -16,6 +17,7 @@
     <string name="str_errorUsername">L\'username deve avere almeno 4 caratteri e non può contenere spazi o caratteri speciali</string>
     <string name="str_errorPaxEquals">Le password non combaciano</string>
     <string name="str_errorNotFound">Utente non trovato, ricontrollare l\'email e la password</string>
+    <string name="str_errorLong">Troppo lungo, massimo 12 caratteri</string>
     <string name="str_NameRegister">Nome</string>
     <string name="str_SurnameRegister">Cognome</string>
     <string name="str_errorNameOrSurname">Compilare il campo</string>
@@ -34,6 +36,9 @@
     <string name="BeerGeneralIntroTitle">La birra…</string>
     <string name="BeerGeneralIntro">Una prima grande suddivisione viene comunemente effettuata a seconda del tipo di lievito utilizzato, distinguendo tra birre ad alta fermentazione, le Ale, come le tradizionali anglosassoni o belghe, e le birre a bassa fermentazione, le Lager, dove trovano posto, tra le altre, birre tedesche famose come pils o le ambrate bock. Non bisogna dimenticare una terza macro categoria, meno nota al bevitore medio, delle birre a fermentazione spontanea, come lo straordinario Lambic belga, prodotto grazie all’azione dei lieviti presenti nell’aria che aggrediscono gli zuccheri del mosto lasciato riposare in vasche aperte.</string>
 
+    <string name="Tipologia">Tipologia: </string>
+    <string name="main">Principali</string>
+    <string name="bassaFerm">Bassa fermentazione</string>
     <string-array name="MainTypeOfBeerList">
         <item>Lager</item>
         <item>Ale</item>
@@ -67,8 +72,9 @@
         <item>Abazia</item>
         <item>IGA</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TODO: PROVA -->
-
 
 </resources>

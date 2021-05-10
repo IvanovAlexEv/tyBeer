@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">tyBeer</string>
     <string name="str_welcome">Welcome!</string>
+    <string name="str_EXIT">Press again to exit.</string>
     <string name="str_emailLogin">email address</string>
     <string name="str_paxLogin">password</string>
     <string name="str_errorEmail">Email address is not valid</string>
@@ -17,6 +18,7 @@
     <string name="str_errorUsername">Username must have at least 4 characters and cannot contain spaces or special characters</string>
     <string name="str_errorPaxEquals">Passwords do not match</string>
     <string name="str_errorNotFound">User not found, recheck email and password</string>
+    <string name="str_errorLong">Too long, maximum 12 characters</string>
     <string name="str_NameRegister">Name</string>
     <string name="str_SurnameRegister">Surname</string>
     <string name="str_errorNameOrSurname">Fill in the field</string>
@@ -35,6 +37,9 @@
     <string name="BeerGeneralIntroTitle">Beer…</string>
     <string name="BeerGeneralIntro">A first large subdivision is commonly carried out depending on the type of yeast used, distinguishing between high fermentation beers, the Ale, as the traditional Anglo-Saxon or Belgian, and low fermentation beers, the Lager, where they find place, among others, famous German beers like pils or ambrate bock. We must not forget a third macro category, less known to the average drinker, of spontaneous fermentation beers, such as the extraordinary Belgian Lambic, produced thanks to the action of the yeasts present in the air that attack the sugars of the must left to rest in open tanks.</string>
 
+    <string name="Tipologia">Type: </string>
+    <string name="main">Main</string>
+    <string name="bassaFerm">low fermentation</string>
     <string-array name="MainTypeOfBeerList">
         <item>Lager</item>
         <item>Ale</item>

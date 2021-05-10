@@ -1,18 +1,29 @@
 package Package.tyBeer
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_signin.*
+import kotlinx.android.synthetic.main.activity_signin.LottieLoad
 import java.util.regex.Pattern
 
 class SigninActivity : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
+    private val userRef = FirebaseDatabase.getInstance().getReference("users")
+    var ListUser : MutableList<User> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,9 +33,14 @@ class SigninActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         UpdateUI(auth.currentUser)
+        allUsername()
     }
 
     fun checkRegister(v: View?){
+
+        LottieLoad!!.visibility = LottieAnimationView.VISIBLE
+        LottieLoad!!.playAnimation()
+
         val username:String = editText_UsernameRegister.text.toString()
         val email:String = editText_emailRegister.text.toString()
         val pax:String = editText_paxRegister.text.toString()
@@ -42,12 +58,24 @@ class SigninActivity : AppCompatActivity() {
             editText_UsernameRegister.error =getString(R.string.str_errorUsernameNotFree)
             isAllOkay=false
         }
+        if (username.length>12){
+            editText_UsernameRegister.error =getString(R.string.str_errorLong)
+            isAllOkay=false
+        }
         if (!isValidNameOrSurname(name)){
             editText_NameRegister.error =getString(R.string.str_errorNameOrSurname)
             isAllOkay=false
         }
+        if (name.length>12){
+            editText_NameRegister.error =getString(R.string.str_errorLong)
+            isAllOkay=false
+        }
         if (!isValidNameOrSurname(surname)){
             editText_SurnameRegister.error =getString(R.string.str_errorNameOrSurname)
+            isAllOkay=false
+        }
+        if (surname.length>12){
+            editText_SurnameRegister.error =getString(R.string.str_errorLong)
             isAllOkay=false
         }
         if (!isValidEmail(email)){
@@ -64,7 +92,23 @@ class SigninActivity : AppCompatActivity() {
         }
         if (isAllOkay) {
             RegistrationUser(username, name, surname, email, pax)
+        } else {
+            LottieLoad!!.cancelAnimation()
+            LottieLoad!!.visibility = LottieAnimationView.INVISIBLE
         }
+    }
+    private fun allUsername() {
+        val ref = FirebaseDatabase.getInstance().getReference("users")
+        val listenerRef = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                ListUser.clear()
+                for (i in snapshot.children){
+                    ListUser.add(i.getValue(User::class.java)!!)
+                }
+            }
+            override fun onCancelled(error: DatabaseError) {}
+        }
+        ref.addValueEventListener(listenerRef)
     }
     private fun isValidUsername(user:String?):Boolean {
         var valid:Boolean=true
@@ -77,8 +121,11 @@ class SigninActivity : AppCompatActivity() {
         } else return false
         return valid
     }
-    private fun isUsernameFree(user:String?):Boolean {
-        //  CONTROLLO DISPONIBILITA' USERNAME
+    private fun isUsernameFree(user:String?) : Boolean{
+        for (i in ListUser) {
+            if(user.equals(i.nicknameU))
+                return false
+        }
         return true
     }
     private fun isValidNameOrSurname(NorS:String?):Boolean{
@@ -113,17 +160,20 @@ class SigninActivity : AppCompatActivity() {
                 val currentUser = auth.currentUser
                 currentUser?.sendEmailVerification()?.addOnSuccessListener {
                     Toast.makeText(this@SigninActivity, R.string.str_EmailVerifSent, Toast.LENGTH_LONG).show();
+                    storeUser(currentUser)
                 }?.addOnFailureListener {
                     Toast.makeText(this@SigninActivity, "Error! Email not sent. " + it.message, Toast.LENGTH_LONG).show();
                 }
                 UpdateUI(currentUser)
             } else {
-                Toast.makeText(this@SigninActivity, "Error! " + R.string.str_errorEmailNotFree, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this@SigninActivity, R.string.str_errorEmailNotFree, Toast.LENGTH_SHORT).show();
                 UpdateUI(null)
             }
         }
+        LottieLoad!!.cancelAnimation()
+        LottieLoad!!.visibility = LottieAnimationView.INVISIBLE
     }
-    fun UpdateUI(currentUser : FirebaseUser?) {
+    private fun UpdateUI(currentUser : FirebaseUser?) {
         currentUser?.reload()
         if (currentUser != null){
             val intentHome = Intent(this@SigninActivity, WaitingEmailActivity::class.java)
@@ -136,4 +186,11 @@ class SigninActivity : AppCompatActivity() {
         startActivity(intentHome)
         finish()
     }
+    private fun storeUser(currentUser : FirebaseUser?){
+        val newUser = User(currentUser!!.uid, editText_UsernameRegister.text.toString(), editText_NameRegister.text.toString(), editText_SurnameRegister.text.toString(), editText_emailRegister.text.toString(),"PHOTOPROFILE${currentUser.uid}", 0)
+        userRef.child(newUser.id).setValue(newUser)
+        val refStorage = FirebaseStorage.getInstance().getReference("PhotoProfile/${newUser.photoProfile}")
+        refStorage.putFile(Uri.parse("android.resource://Package.tyBeer/drawable/logo"))
+    }
+
 }

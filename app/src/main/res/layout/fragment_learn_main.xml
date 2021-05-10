@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".LearnFragment.LearnMainFragment">
+
+    <TextView
+        android:id="@+id/TitleMainType"
+        style="@style/textViewTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/BeerGeneralIntroTitle"
+        android:textColor="@color/yellow_dark" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:layout_marginTop="24dp">
+
+            <TextView
+                android:id="@+id/textMainType"
+                style="@style/Normaltext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/BeerGeneralIntro" />
+
+    </ScrollView>
+
+    <ListView
+        android:id="@+id/ListMainType"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"/>
+
+</LinearLayout>
+
+

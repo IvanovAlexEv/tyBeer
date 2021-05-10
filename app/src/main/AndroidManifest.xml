@@ -10,11 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TyBeer">
         <activity
-            android:name=".WaitingEmailActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.start" />
-        <activity android:name=".HomeActivity" />
-        <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.start">
@@ -29,6 +24,13 @@
         <activity
             android:name=".SigninActivity"
             android:theme="@style/Theme.start" />
+        <activity
+            android:name=".WaitingEmailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.start" />
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

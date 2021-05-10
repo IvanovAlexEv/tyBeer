@@ -8,15 +8,57 @@
     tools:context=".HomeActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentSuLayout"
-        android:name="Package.tyBeer.MainTypeOfBeerFragment"
+        android:id="@+id/FragmentContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="0dp"
+        android:layout_weight="15" />
 
-    <Button
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="logout"
-        android:onClick="onLogOut"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/black">
+
+        <ImageButton
+            android:id="@+id/btnBarHome"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:src="@drawable/ic_bar_home_sel"
+            android:onClick="onClickBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnBarFriends" />
+
+        <ImageButton
+            android:id="@+id/btnBarFriends"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:src="@drawable/ic_bar_friends"
+            android:onClick="onClickBar"
+            app:layout_constraintStart_toEndOf="@id/btnBarHome"
+            app:layout_constraintEnd_toStartOf="@id/btnBarAdd" />
+
+        <ImageButton
+            android:id="@+id/btnBarAdd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:src="@drawable/ic_bar_add"
+            android:onClick="onClickBar"
+            app:layout_constraintStart_toEndOf="@id/btnBarFriends"
+            app:layout_constraintEnd_toStartOf="@id/btnBarProfile" />
+
+        <ImageButton
+            android:id="@+id/btnBarProfile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:src="@drawable/ic_bar_profile"
+            android:onClick="onClickBar"
+            app:layout_constraintStart_toEndOf="@id/btnBarAdd"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

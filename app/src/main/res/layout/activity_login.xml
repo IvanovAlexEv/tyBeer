@@ -101,6 +101,19 @@
         app:layout_constraintStart_toEndOf="@+id/button_register"
         app:layout_constraintTop_toBottomOf="@+id/editText_paxLogin" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/LottieLoad"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/textView_newPax"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_login"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/load" />
+
     <TextView
         android:id="@+id/textView_newPax"
         style="@style/Normaltext"
