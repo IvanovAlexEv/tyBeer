@@ -33,6 +33,11 @@
     <string name="str_TextWaitEmailConf2">If you have not received any email:</string>
     <string name="str_click">click here</string>
     <string name="str_Logout">Logout</string>
+    <string name="str_errorPost">No photos uploaded.</string>
+    <string name="str_descPost">Add a description</string>
+    <string name="str_Publish">Publish</string>
+    <string name="str_Annulla">Undo</string>
+    <string name="str_FinishPublish">The post was published.</string>
 
     <string name="BeerGeneralIntroTitle">Beer…</string>
     <string name="BeerGeneralIntro">A first large subdivision is commonly carried out depending on the type of yeast used, distinguishing between high fermentation beers, the Ale, as the traditional Anglo-Saxon or Belgian, and low fermentation beers, the Lager, where they find place, among others, famous German beers like pils or ambrate bock. We must not forget a third macro category, less known to the average drinker, of spontaneous fermentation beers, such as the extraordinary Belgian Lambic, produced thanks to the action of the yeasts present in the air that attack the sugars of the must left to rest in open tanks.</string>

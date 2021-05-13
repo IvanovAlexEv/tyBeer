@@ -187,7 +187,7 @@ class SigninActivity : AppCompatActivity() {
         finish()
     }
     private fun storeUser(currentUser : FirebaseUser?){
-        val newUser = User(currentUser!!.uid, editText_UsernameRegister.text.toString(), editText_NameRegister.text.toString(), editText_SurnameRegister.text.toString(), editText_emailRegister.text.toString(),"PHOTOPROFILE${currentUser.uid}", 0)
+        val newUser = User(currentUser!!.uid, editText_UsernameRegister.text.toString(), editText_NameRegister.text.toString(), editText_SurnameRegister.text.toString(), editText_emailRegister.text.toString(),"PHOTOPROFILE${currentUser.uid}", 0, 0)
         userRef.child(newUser.id).setValue(newUser)
         val refStorage = FirebaseStorage.getInstance().getReference("PhotoProfile/${newUser.photoProfile}")
         refStorage.putFile(Uri.parse("android.resource://Package.tyBeer/drawable/logo"))

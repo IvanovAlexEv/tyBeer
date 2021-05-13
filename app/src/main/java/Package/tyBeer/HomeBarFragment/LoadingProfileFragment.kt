@@ -10,25 +10,28 @@ import Package.tyBeer.R
 import android.widget.ImageButton
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import java.lang.IllegalStateException
 import kotlin.concurrent.thread
 
-class loadingK : Fragment() {
+class LoadingProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val v = inflater.inflate(R.layout.loading, container, false)
+        val v = inflater.inflate(R.layout.fragment_loading_profile, container, false)
         setButton()
         thread{
-            while ( HomeActivity.thisUser == null || !HomeActivity.readyPhoto ) { }
-            requireActivity().runOnUiThread {
-                requireActivity().supportFragmentManager.commit {
-                    setReorderingAllowed(true)
-                    replace<ProfileFragment>(R.id.FragmentContainer)
+            try {
+                while ( HomeActivity.thisUser == null || !HomeActivity.readyPhoto || HomeActivity.thisUser?.postList?.size != HomeActivity.readyPost) {}
+                requireActivity().runOnUiThread {
+                    requireActivity().supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace<ProfileFragment>(R.id.FragmentContainer)
+                    }
                 }
-            }
+            } catch (e:IllegalStateException){}
         }
         return v
     }
-    fun setButton(){
+    private fun setButton(){
         val btnHome = requireActivity().findViewById<ImageButton>(R.id.btnBarHome)
         val btnFriends = requireActivity().findViewById<ImageButton>(R.id.btnBarFriends)
         val btnAdd = requireActivity().findViewById<ImageButton>(R.id.btnBarAdd)

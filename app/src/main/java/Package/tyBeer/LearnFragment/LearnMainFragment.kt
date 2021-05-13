@@ -41,7 +41,7 @@ class LearnMainFragment : Fragment(R.layout.fragment_learn_main) {
         if (click==0){
             requireActivity().supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                replace<LearnLagerFragment>(R.id.FragmentContainer)
+                replace<LearnLagerFragment>(R.id.FragmentContainer).addToBackStack(null)
             }
         }
         if (click==1){

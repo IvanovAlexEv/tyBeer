@@ -1,8 +1,9 @@
 package Package.tyBeer
 
+import Package.tyBeer.HomeBarFragment.AddFragment
 import Package.tyBeer.LearnFragment.LearnMainFragment
 import Package.tyBeer.HomeBarFragment.ProfileFragment
-import Package.tyBeer.HomeBarFragment.loadingK
+import Package.tyBeer.HomeBarFragment.LoadingProfileFragment
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,21 +20,21 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_home.*
 import java.io.File
 import java.lang.Thread.sleep
+import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
 
 class HomeActivity : AppCompatActivity() {
 
     private var exit = 0
     lateinit var auth : FirebaseAuth
-    private lateinit var refDB: DatabaseReference
-    private lateinit var refDBListener : ValueEventListener
+
     companion object{
         var idUser : String? = null
         var thisUser: User? = null
         var thisPhotoProfile : File? = File.createTempFile("${thisUser?.photoProfile}", "jpg")
+        var thisPhotoPost : MutableList<File?> = ArrayList()
         var readyPhoto: Boolean = false
-        //var ListUser : MutableList<User> = ArrayList()
-        //var ListPicture : MutableList<User> = ArrayList()
+        var readyPost: Int = 0
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,30 +48,34 @@ class HomeActivity : AppCompatActivity() {
         }
         auth = FirebaseAuth.getInstance();
         idUser = auth.currentUser!!.uid
-    }
-
-    override fun onStart() {
-        super.onStart()
         recuperoDati()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        refDB.removeEventListener(refDBListener)
     }
 
     private fun recuperoDati() {
 
         // RECUPERO DATI UTENTE LOGGATO
-        refDB = FirebaseDatabase.getInstance().getReference("users/$idUser")
-        refDBListener = object : ValueEventListener {
+        val refDB = FirebaseDatabase.getInstance().getReference("users/$idUser")
+        val refDBListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 readyPhoto=false
                 thisUser = snapshot.getValue(User::class.java)!!
                 val refStorage = FirebaseStorage.getInstance().getReference("PhotoProfile/${thisUser!!.photoProfile}")
                 refStorage.getFile(thisPhotoProfile!!).addOnCompleteListener { readyPhoto=true }
 
-                Toast.makeText(this@HomeActivity, "DATI CAMBIATI! ", Toast.LENGTH_LONG).show();
+                //RECUPERO POST UTENTE
+                thisPhotoPost.clear()
+                readyPost=0
+                for ((index, post) in thisUser!!.postList.withIndex()){
+                    val filePost = File.createTempFile(post.idPost, "jpg")
+                    thisPhotoPost.add(filePost)
+                    val refStoragePost = FirebaseStorage.getInstance().getReference("PhotoPost/${thisUser!!.id}/${post.idPost}")
+                    refStoragePost.getFile(filePost).addOnSuccessListener {
+                        readyPost++
+                        thisPhotoPost.removeAt(index)
+                        thisPhotoPost.add(index, filePost)
+                        //Toast.makeText(this@HomeActivity, "situazione: post=${HomeActivity.readyPost}/${HomeActivity.thisUser?.postList?.size}, fotoProfilo: ${HomeActivity.readyPhoto}" , Toast.LENGTH_SHORT).show();
+                    }
+                }
 
             }
             override fun onCancelled(error: DatabaseError) {}
@@ -78,7 +83,7 @@ class HomeActivity : AppCompatActivity() {
         refDB.addValueEventListener(refDBListener)
 
         /*
-        // RECUPERO TUTTI GLI UTENTI ????
+        // RECUPERO POST ????
         val refDB2 = FirebaseDatabase.getInstance().getReference("users")
         refDB2.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -104,15 +109,19 @@ class HomeActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }
     override fun onBackPressed() {
-        if (exit==0){
-            exit++
-            Toast.makeText(this@HomeActivity, R.string.str_EXIT, Toast.LENGTH_LONG).show();
-        } else if (exit==1){
+        if (supportFragmentManager.backStackEntryCount==0){
+            if (exit == 0) {
+                exit++
+                Toast.makeText(this@HomeActivity, R.string.str_EXIT, Toast.LENGTH_SHORT).show();
+            } else if (exit == 1) {
+                super.onBackPressed()
+            }
+            thread {
+                sleep(3500)
+                exit = 0
+            }
+        } else{
             super.onBackPressed()
-        }
-        thread {
-            sleep(3500)
-            exit=0
         }
     }
 
@@ -124,6 +133,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun onClickBar(v: View) {
+        supportFragmentManager.popBackStack()
         when (v.id) {
             R.id.btnBarHome -> {
                 supportFragmentManager.commit {
@@ -134,12 +144,16 @@ class HomeActivity : AppCompatActivity() {
             R.id.btnBarFriends -> {
             }
             R.id.btnBarAdd -> {
+                supportFragmentManager.commit {
+                    setReorderingAllowed(true)
+                    replace<AddFragment>(R.id.FragmentContainer)
+                }
             }
             R.id.btnBarProfile -> {
-                if (thisUser == null || !readyPhoto) {
+                if (thisUser == null || !readyPhoto ||  thisUser?.postList?.size != readyPost) {
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace<loadingK>(R.id.FragmentContainer)
+                        replace<LoadingProfileFragment>(R.id.FragmentContainer)
                     }
                 } else {
                     supportFragmentManager.commit {

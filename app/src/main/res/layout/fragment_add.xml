@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeBarFragment.AddFragment"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/imagePost"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3.5"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/logo"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/browser_actions_bg_grey" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/black" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/LottieStar1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/star"
+            app:lottie_autoPlay="false"
+            android:visibility="visible"
+            app:lottie_loop="false"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/LottieStar2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/star"
+            app:lottie_autoPlay="false"
+            android:visibility="visible"
+            app:lottie_loop="false"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/LottieStar3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/star"
+            app:lottie_autoPlay="false"
+            android:visibility="visible"
+            app:lottie_loop="false"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/LottieStar4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/star"
+            app:lottie_autoPlay="false"
+            android:visibility="visible"
+            app:lottie_loop="false"/>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/LottieStar5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/star"
+            app:lottie_autoPlay="false"
+            android:visibility="visible"
+            app:lottie_loop="false"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textDescPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/str_descPost"
+            android:gravity="center"
+            android:fontFamily="@font/cabin"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/button"
+                android:background="@drawable/drw2_btn"
+                android:textColor="@color/black"
+                android:text="@string/str_Annulla"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnPublish"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnPublish"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                style="@style/button"
+                android:background="@drawable/drw2_btn"
+                android:textColor="@color/black"
+                android:text="@string/str_Publish"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnBack"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

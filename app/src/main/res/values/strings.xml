@@ -32,6 +32,11 @@
     <string name="str_TextWaitEmailConf2">Se non hai ricevuto nessuna email:</string>
     <string name="str_click">clicca qui</string>
     <string name="str_Logout">Logout</string>
+    <string name="str_errorPost">Nessuna foto caricata.</string>
+    <string name="str_descPost">Aggiungi una descrizione</string>
+    <string name="str_Publish">Pubblica</string>
+    <string name="str_Annulla">Annulla</string>
+    <string name="str_FinishPublish">Il post è stato pubblicato.</string>
 
     <string name="BeerGeneralIntroTitle">La birra…</string>
     <string name="BeerGeneralIntro">Una prima grande suddivisione viene comunemente effettuata a seconda del tipo di lievito utilizzato, distinguendo tra birre ad alta fermentazione, le Ale, come le tradizionali anglosassoni o belghe, e le birre a bassa fermentazione, le Lager, dove trovano posto, tra le altre, birre tedesche famose come pils o le ambrate bock. Non bisogna dimenticare una terza macro categoria, meno nota al bevitore medio, delle birre a fermentazione spontanea, come lo straordinario Lambic belga, prodotto grazie all’azione dei lieviti presenti nell’aria che aggrediscono gli zuccheri del mosto lasciato riposare in vasche aperte.</string>
@@ -72,8 +77,6 @@
         <item>Abazia</item>
         <item>IGA</item>
     </string-array>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- TODO: PROVA -->
 

@@ -1,5 +1,6 @@
 package Package.tyBeer.HomeBarFragment
 
+import Package.tyBeer.AdapterPost
 import Package.tyBeer.HomeActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,15 +12,22 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
+import android.widget.GridView
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlin.concurrent.thread
 
 class ProfileFragment : Fragment() {
+
+    companion object{
+        var SELECTEDPOST : Int? = null
+    }
 
     private lateinit var v : View
     val FunctionPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
@@ -57,10 +65,19 @@ class ProfileFragment : Fragment() {
         val profilePhoto = v.findViewById<CircleImageView>(R.id.imageProfile)
         profilePhoto.setImageBitmap(BitmapFactory.decodeFile(HomeActivity.thisPhotoProfile!!.path))
         profilePhoto.setOnClickListener {  onClickChangePhoto() }
+        val GridListPost = v.findViewById<GridView>(R.id.GridViewListPost)
+        GridListPost.adapter = AdapterPost(requireContext(), HomeActivity.thisPhotoPost)
+        GridListPost.setOnItemClickListener { parent, view, position, id ->
+            SELECTEDPOST= HomeActivity.thisPhotoPost.size - position -1
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<ReadPostFragment>(R.id.FragmentContainer).addToBackStack(null)
+            }
+        }
         return v
     }
 
-    fun setButton(){
+    private fun setButton(){
         val btnHome = requireActivity().findViewById<ImageButton>(R.id.btnBarHome)
         val btnFriends = requireActivity().findViewById<ImageButton>(R.id.btnBarFriends)
         val btnAdd = requireActivity().findViewById<ImageButton>(R.id.btnBarAdd)
@@ -71,7 +88,7 @@ class ProfileFragment : Fragment() {
         btnProfile.setImageResource(R.drawable.ic_bar_profile_sel)
     }
 
-    fun onClickChangePhoto(){
+    private fun onClickChangePhoto(){
         val intent = Intent()
         intent.type = "image/*"
         intent.action = Intent.ACTION_GET_CONTENT
