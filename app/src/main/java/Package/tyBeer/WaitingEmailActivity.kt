@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_waiting_email.*
 
+// SCHERMATA DI CONFERMA EMAIL
+
 class WaitingEmailActivity : AppCompatActivity() {
 
     private lateinit var auth : FirebaseAuth
@@ -35,6 +37,7 @@ class WaitingEmailActivity : AppCompatActivity() {
         currentUser?.reload()
         UpdateUI(currentUser)
     }
+    // GESTIONE DEL CAMBIAMENTO DELLO STATO DELL'UTENTE
     private fun UpdateUI(currentUser : FirebaseUser?) {
         if (currentUser != null && currentUser.isEmailVerified){
             val intentHome = Intent(this@WaitingEmailActivity, HomeActivity::class.java)
@@ -42,6 +45,7 @@ class WaitingEmailActivity : AppCompatActivity() {
             finish()
         }
     }
+    // RICARICA, EFFETTUA CONTROLLO DI CONFERMA EMAIL
     fun onReload(v: View?){
             LottieLoad.visibility = LottieAnimationView.VISIBLE
             LottieLoad.playAnimation()
@@ -49,6 +53,7 @@ class WaitingEmailActivity : AppCompatActivity() {
             currentUser?.reload()
             UpdateUI(currentUser)
     }
+    // INVIO NUOVA EMAIL
     fun onSendNewEmail(v: View?){
         LottieLoad.visibility = LottieAnimationView.VISIBLE
         LottieLoad.playAnimation()
@@ -58,6 +63,7 @@ class WaitingEmailActivity : AppCompatActivity() {
             Toast.makeText(this@WaitingEmailActivity, "Error! Email not sent. " + it.message, Toast.LENGTH_LONG).show();
         }
     }
+    // LOGOUT
     fun onLogOut(v: View?){
         FirebaseAuth.getInstance().signOut();
         val intentHome = Intent(this, LoginActivity::class.java)

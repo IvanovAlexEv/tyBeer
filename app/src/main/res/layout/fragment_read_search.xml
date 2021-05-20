@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeBarFragment.ReadSearchFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageProfileSearch"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="1dp"
+                app:civ_circle_background_color="@color/brown_dark"
+                app:layout_constraintBottom_toTopOf="@id/textEmailProfileSearch"
+                app:layout_constraintEnd_toStartOf="@+id/textUsernameProfileSearch"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/LottieLoadProfileSearch"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageProfileSearch"
+                app:layout_constraintEnd_toEndOf="@+id/imageProfileSearch"
+                app:layout_constraintStart_toStartOf="@+id/imageProfileSearch"
+                app:layout_constraintTop_toTopOf="@+id/imageProfileSearch"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/load" />
+
+            <TextView
+                android:id="@+id/textUsernameProfileSearch"
+                style="@style/Normaltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="UsernameDef."
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/textNameProfileSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageProfileSearch"
+                app:layout_constraintTop_toTopOf="@id/imageProfileSearch"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/textNameProfileSearch"
+                style="@style/Normaltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NameDefault"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/textSurnameProfileSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageProfileSearch"
+                app:layout_constraintTop_toBottomOf="@id/textUsernameProfileSearch" />
+
+            <TextView
+                android:id="@+id/textSurnameProfileSearch"
+                style="@style/Normaltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SurnameDefault"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toTopOf="@id/textFollowerSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imageProfileSearch"
+                app:layout_constraintTop_toBottomOf="@id/textNameProfileSearch" />
+
+            <TextView
+                android:id="@+id/textTitleFollowerSearch"
+                style="@style/Normaltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="italic"
+                android:text="Follower: "
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/textFollowerSearch"
+                app:layout_constraintEnd_toStartOf="@id/textFollowerSearch"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toEndOf="@id/imageProfileSearch"
+                app:layout_constraintTop_toTopOf="@id/textFollowerSearch" />
+
+            <TextView
+                android:id="@+id/textFollowerSearch"
+                style="@style/Normaltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:layout_marginTop="3dp"
+                android:padding="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageProfileSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/textTitleFollowerSearch"
+                app:layout_constraintTop_toBottomOf="@id/textSurnameProfileSearch" />
+
+            <Button
+                android:id="@+id/btnUnfollow"
+                android:background="@drawable/drw3_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="19sp"
+                android:text="@string/str_Unfollow"
+                android:paddingHorizontal="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/textEmailProfileSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageProfileSearch" />
+
+            <Button
+                android:id="@+id/btnFollow"
+                android:background="@drawable/drw2_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="19sp"
+                android:text="@string/str_Follow"
+                android:paddingHorizontal="5dp"
+                android:textSize="12sp"
+                android:textColor="@color/brown_dark"
+                app:layout_constraintBottom_toTopOf="@+id/textEmailProfileSearch"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageProfileSearch" />
+
+            <TextView
+                android:id="@+id/textEmailProfileSearch"
+                style="@style/Normaltext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="EmailDefault.empty@random.com"
+                android:textColor="@color/brown_dark"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnFollow" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/barra"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/browser_actions_bg_grey" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/black" />
+
+        <GridView
+            android:id="@+id/GridViewListPostSearch"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:numColumns="3" />
+
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/LottieLoadPostSearch"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="155dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/load" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

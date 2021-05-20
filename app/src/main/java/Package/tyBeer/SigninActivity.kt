@@ -36,6 +36,7 @@ class SigninActivity : AppCompatActivity() {
         allUsername()
     }
 
+    // CHECK DI VERIFICA DEI CAMPI
     fun checkRegister(v: View?){
 
         LottieLoad!!.visibility = LottieAnimationView.VISIBLE
@@ -97,6 +98,7 @@ class SigninActivity : AppCompatActivity() {
             LottieLoad!!.visibility = LottieAnimationView.INVISIBLE
         }
     }
+    // RECUPERO DI TUTTI I NICKNAME
     private fun allUsername() {
         val ref = FirebaseDatabase.getInstance().getReference("users")
         val listenerRef = object : ValueEventListener {
@@ -154,6 +156,7 @@ class SigninActivity : AppCompatActivity() {
         }
         return ( UpperCase && LowerCase && Number && Length)
     }
+    // REGISTRAZIONE DELL'UTENTE...
     private fun RegistrationUser(username: String , name: String , surname: String, email: String, pax: String){
         auth.createUserWithEmailAndPassword(email,pax).addOnCompleteListener(this){ task ->
             if(task.isSuccessful){
@@ -173,6 +176,7 @@ class SigninActivity : AppCompatActivity() {
         LottieLoad!!.cancelAnimation()
         LottieLoad!!.visibility = LottieAnimationView.INVISIBLE
     }
+    // GESTIONE DEL CAMBIAMENTO DELLO STATO DELL'UTENTE
     private fun UpdateUI(currentUser : FirebaseUser?) {
         currentUser?.reload()
         if (currentUser != null){
@@ -186,6 +190,7 @@ class SigninActivity : AppCompatActivity() {
         startActivity(intentHome)
         finish()
     }
+    // MEMORIZZAZIONE DATI DELL'UTENTE REGISTRATO SUL DATABASE (FIREBASE)
     private fun storeUser(currentUser : FirebaseUser?){
         val newUser = User(currentUser!!.uid, editText_UsernameRegister.text.toString(), editText_NameRegister.text.toString(), editText_SurnameRegister.text.toString(), editText_emailRegister.text.toString(),"PHOTOPROFILE${currentUser.uid}", 0, 0)
         userRef.child(newUser.id).setValue(newUser)

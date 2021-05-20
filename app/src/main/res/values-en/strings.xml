@@ -38,6 +38,16 @@
     <string name="str_Publish">Publish</string>
     <string name="str_Annulla">Undo</string>
     <string name="str_FinishPublish">The post was published.</string>
+    <string name="str_DeletePost">Delete Post</string>
+    <string name="str_ConfirmDeletePostTitle">Are you sure?</string>
+    <string name="str_ConfirmDeletePostDesc">The post will be deleted permanently, do you want to proceed?</string>
+    <string name="str_OkDeletePost">The post was successfully deleted.</string>
+    <string name="str_listFriends">People you follow:</string>
+    <string name="str_cercaPersone">looking for people</string>
+    <string name="str_Follow">follow</string>
+    <string name="str_Unfollow">unfollow</string>
+    <string name="str_FilterHint">Nickname\/Name\/Surname\/email</string>
+    <string name="str_Cerca">Search</string>
 
     <string name="BeerGeneralIntroTitle">Beer…</string>
     <string name="BeerGeneralIntro">A first large subdivision is commonly carried out depending on the type of yeast used, distinguishing between high fermentation beers, the Ale, as the traditional Anglo-Saxon or Belgian, and low fermentation beers, the Lager, where they find place, among others, famous German beers like pils or ambrate bock. We must not forget a third macro category, less known to the average drinker, of spontaneous fermentation beers, such as the extraordinary Belgian Lambic, produced thanks to the action of the yeasts present in the air that attack the sugars of the must left to rest in open tanks.</string>

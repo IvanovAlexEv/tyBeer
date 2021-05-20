@@ -26,10 +26,13 @@ import kotlin.concurrent.thread
 class ProfileFragment : Fragment() {
 
     companion object{
+        // VARIABILE STATICA CHE SERVE A ReadPostFragment PER APRIRE IL POST SELEZIONATO
         var SELECTEDPOST : Int? = null
     }
 
     private lateinit var v : View
+
+    // FUNZIONE CHE SERVE PER SETTARE LA FOTO PROFILO SELEZIONATA DALLA GALLERIA (ANCHE SU FIREBASE)
     val FunctionPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         thread{
             val profilePhoto = v.findViewById<CircleImageView>(R.id.imageProfile)
@@ -53,18 +56,23 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         v = inflater.inflate(R.layout.fragment_profile, container, false)
         setButton()
+        SELECTEDPOST = null
 
-        val testUsernameProf = v.findViewById<TextView>(R.id.textUsernameProfile)
-        testUsernameProf.text = HomeActivity.thisUser!!.nicknameU
-        val testNameProf = v.findViewById<TextView>(R.id.textNameProfile)
-        testNameProf.text = HomeActivity.thisUser!!.nameU
-        val testSurnameProf = v.findViewById<TextView>(R.id.textSurnameProfile)
-        testSurnameProf.text = HomeActivity.thisUser!!.surnameU
-        val testEmailProf = v.findViewById<TextView>(R.id.textEmailProfile)
-        testEmailProf.text = HomeActivity.thisUser!!.emailU
+        // SETTING DATI PROFILO
+        val textUsernameProf = v.findViewById<TextView>(R.id.textUsernameProfile)
+        textUsernameProf.text = HomeActivity.thisUser!!.nicknameU
+        val textNameProf = v.findViewById<TextView>(R.id.textNameProfile)
+        textNameProf.text = HomeActivity.thisUser!!.nameU
+        val textSurnameProf = v.findViewById<TextView>(R.id.textSurnameProfile)
+        textSurnameProf.text = HomeActivity.thisUser!!.surnameU
+        val textFollower = v.findViewById<TextView>(R.id.textFollower)
+        textFollower.text = HomeActivity.thisUser!!.followerListU.size.toString()
+        val textEmailProf = v.findViewById<TextView>(R.id.textEmailProfile)
+        textEmailProf.text = HomeActivity.thisUser!!.emailU
         val profilePhoto = v.findViewById<CircleImageView>(R.id.imageProfile)
         profilePhoto.setImageBitmap(BitmapFactory.decodeFile(HomeActivity.thisPhotoProfile!!.path))
         profilePhoto.setOnClickListener {  onClickChangePhoto() }
+        // SETTING POST
         val GridListPost = v.findViewById<GridView>(R.id.GridViewListPost)
         GridListPost.adapter = AdapterPost(requireContext(), HomeActivity.thisPhotoPost)
         GridListPost.setOnItemClickListener { parent, view, position, id ->
@@ -74,9 +82,22 @@ class ProfileFragment : Fragment() {
                 replace<ReadPostFragment>(R.id.FragmentContainer).addToBackStack(null)
             }
         }
+        // SETTING VISUALIZZAZIONE FOLLOWER
+        val textTitleFollower = v.findViewById<TextView>(R.id.textTitleFollower)
+        textTitleFollower.setOnClickListener { openFollower() }
+        textFollower.setOnClickListener { openFollower() }
         return v
     }
 
+    // APRE LA SCHERMATA PER VISUALIZZARE I PROPRI FOLLOWER
+    private fun openFollower() {
+        requireActivity().supportFragmentManager.commit {
+            setReorderingAllowed(true)
+            replace<FollowerFragment>(R.id.FragmentContainer).addToBackStack(null)
+        }
+    }
+
+    // SETTA LA BARRA DEL MENU'
     private fun setButton(){
         val btnHome = requireActivity().findViewById<ImageButton>(R.id.btnBarHome)
         val btnFriends = requireActivity().findViewById<ImageButton>(R.id.btnBarFriends)
@@ -88,6 +109,7 @@ class ProfileFragment : Fragment() {
         btnProfile.setImageResource(R.drawable.ic_bar_profile_sel)
     }
 
+    // RICHIAMA L'INTENT DELLA GALLERIA
     private fun onClickChangePhoto(){
         val intent = Intent()
         intent.type = "image/*"

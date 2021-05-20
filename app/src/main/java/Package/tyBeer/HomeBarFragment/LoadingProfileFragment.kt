@@ -20,8 +20,10 @@ class LoadingProfileFragment : Fragment() {
         setButton()
         thread{
             try {
-                while ( HomeActivity.thisUser == null || !HomeActivity.readyPhoto || HomeActivity.thisUser?.postList?.size != HomeActivity.readyPost) {}
+                // CARICAMENTO FINO A QUANDO NON SONO PRONTI TUTTI I DATI OCCORRENTI
+                while ( HomeActivity.thisUser == null || !HomeActivity.readyPhoto || 0 != HomeActivity.readyPost) {}
                 requireActivity().runOnUiThread {
+                    // APERTURA PROFILO
                     requireActivity().supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         replace<ProfileFragment>(R.id.FragmentContainer)
@@ -31,6 +33,8 @@ class LoadingProfileFragment : Fragment() {
         }
         return v
     }
+
+    // SETTA LA BARRA DEL MENU'
     private fun setButton(){
         val btnHome = requireActivity().findViewById<ImageButton>(R.id.btnBarHome)
         val btnFriends = requireActivity().findViewById<ImageButton>(R.id.btnBarFriends)

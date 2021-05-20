@@ -34,6 +34,7 @@ class AddFragment : Fragment() {
     private var valutazione : Int = 1
     private var dataPhoto : Uri? = null
 
+    // FUNZIONE CHE SETTA L'IMMAGINE PRESA DALLA GALLERIA
     val FunctionPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         thread{
             if (it.resultCode == Activity.RESULT_OK){
@@ -64,11 +65,12 @@ class AddFragment : Fragment() {
         val btnPublish = v.findViewById<Button>(R.id.btnPublish)
         btnPublish.setOnClickListener { publish() }
         val btnBack = v.findViewById<Button>(R.id.btnBack)
-        btnBack.setOnClickListener { clear() }
+        btnBack.setOnClickListener { clear(true) }
         onClickChangePhoto()
         return v
     }
 
+    // SETTA LA BARRA DEL MENU'
     private fun setButton(){
         val btnHome = requireActivity().findViewById<ImageButton>(R.id.btnBarHome)
         val btnFriends = requireActivity().findViewById<ImageButton>(R.id.btnBarFriends)
@@ -80,6 +82,7 @@ class AddFragment : Fragment() {
         btnProfile.setImageResource(R.drawable.ic_bar_profile)
     }
 
+    // RICHIAMA L'INTENT DELLA GALLERIA
     private fun onClickChangePhoto(){
         val intent = Intent()
         intent.type = "image/*"
@@ -87,6 +90,7 @@ class AddFragment : Fragment() {
         FunctionPhoto.launch(intent)
     }
 
+    // GESTISCE IL CLICK SULLA VALUTAZIONE IN STELLE
     private fun setStar(n : Int){
         valutazione=n
         star1.progress= 0F
@@ -115,6 +119,8 @@ class AddFragment : Fragment() {
             star5.playAnimation()
         }
     }
+
+    // GESTISCE IL TASTO PUBLICA
     private fun publish(){
         if (dataPhoto == null){
             Toast.makeText(requireContext(), R.string.str_errorPost, Toast.LENGTH_SHORT).show()
@@ -132,10 +138,13 @@ class AddFragment : Fragment() {
                 HomeActivity.thisUser!!.postList.add( thisPost )
                 userRef.child(HomeActivity.idUser!!).setValue(HomeActivity.thisUser)
             }
+            // DOPO AVER POSTATO PULISCE IL FRAGMENT SENZA APRIRE LA GALLERIA
+            clear(false)
         }
     }
 
-    private fun clear(){
+    // PULISCE IL FRAGMENT CON LA POSSIBILITA' DI APRIRE O NO LA GALLERIA IN MODO AUTOMATICO
+    private fun clear(openGallery:Boolean){
         dataPhoto = null
         photoPost.setImageResource(R.drawable.logo)
         valutazione=1
@@ -151,6 +160,8 @@ class AddFragment : Fragment() {
         star5.cancelAnimation()
         val descPost = v.findViewById<TextInputEditText>(R.id.textDescPost)
         descPost.text?.clear()
-        onClickChangePhoto()
+        if (openGallery)
+            onClickChangePhoto()
     }
+
 }

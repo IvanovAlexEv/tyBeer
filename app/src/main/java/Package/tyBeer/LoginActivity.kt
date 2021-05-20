@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieAnimationView.INVISIBLE
 import com.airbnb.lottie.LottieAnimationView.VISIBLE
 import com.google.firebase.auth.FirebaseAuth
@@ -17,7 +16,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_login.LottieLoad
 import kotlinx.android.synthetic.main.activity_waiting_email.*
 import java.util.regex.Pattern
-
 
 class LoginActivity : AppCompatActivity() {
 
@@ -33,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         UpdateUI(auth.currentUser)
     }
 
+    // CHECK DI VERIFICA DEI CAMPI
     fun checkLogin(v: View?){
         LottieLoad!!.visibility = VISIBLE
         LottieLoad!!.playAnimation()
@@ -77,7 +76,6 @@ class LoginActivity : AppCompatActivity() {
         }
         return (UpperCase && LowerCase && Number && Length)
     }
-
     private fun isUserFound(pax:String, email:String) {
         auth.signInWithEmailAndPassword(email, pax).addOnCompleteListener(this) { task ->
             if(task.isSuccessful){
@@ -91,6 +89,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+    // GESTIONE DEL CAMBIAMENTO DELLO STATO DELL'UTENTE
     private fun UpdateUI(currentUser : FirebaseUser?) {
         currentUser?.reload()
         if (currentUser != null && currentUser.isEmailVerified){
@@ -106,11 +105,13 @@ class LoginActivity : AppCompatActivity() {
             return
         }
     }
+    // APERTURA REGISTRAZIONE
     fun openRegister(v:View){
         val intentHome = Intent(this@LoginActivity, SigninActivity::class.java)
         startActivity(intentHome)
         finish();
     }
+    // APERTURA GESTIONE PASSWORD DIMENTICATA TRAMITE DIALOG
     fun openNewPax(v:View){
         val emailText = EditText(this@LoginActivity)
         val newPax = AlertDialog.Builder(this@LoginActivity)

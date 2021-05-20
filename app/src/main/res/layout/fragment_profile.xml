@@ -18,21 +18,21 @@
             android:layout_height="125dp"
             app:civ_border_color="@color/black"
             app:civ_border_width="1dp"
+            app:civ_circle_background_color="@color/brown_dark"
+            app:layout_constraintBottom_toTopOf="@id/textEmailProfile"
             app:layout_constraintEnd_toStartOf="@+id/textUsernameProfile"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/textEmailProfile"
-            app:civ_circle_background_color="@color/brown_dark" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textUsernameProfile"
+            style="@style/Normaltext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="UsernameDef."
-            android:textStyle="bold"
-            style="@style/Normaltext"
-            android:textSize="25sp"
             android:layout_marginBottom="5dp"
+            android:text="UsernameDef."
+            android:textSize="25sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/textNameProfile"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageProfile"
@@ -41,10 +41,10 @@
 
         <TextView
             android:id="@+id/textNameProfile"
+            style="@style/Normaltext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="NameDefault"
-            style="@style/Normaltext"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@id/textSurnameProfile"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,19 +58,47 @@
             android:layout_height="wrap_content"
             android:text="SurnameDefault"
             android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+            app:layout_constraintBottom_toTopOf="@id/textFollower"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageProfile"
             app:layout_constraintTop_toBottomOf="@id/textNameProfile" />
 
         <TextView
+            android:id="@+id/textTitleFollower"
+            style="@style/Normaltext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:text="Follower: "
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textFollower"
+            app:layout_constraintEnd_toStartOf="@id/textFollower"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@id/imageProfile"
+            app:layout_constraintTop_toTopOf="@id/textFollower" />
+
+        <TextView
+            android:id="@+id/textFollower"
+            style="@style/Normaltext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:layout_marginTop="3dp"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageProfile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textTitleFollower"
+            app:layout_constraintTop_toBottomOf="@id/textSurnameProfile" />
+
+        <TextView
             android:id="@+id/textEmailProfile"
+            style="@style/Normaltext"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="EmailDefault.empty@random.com"
-            style="@style/Normaltext"
-            android:textStyle="italic"
             android:textColor="@color/brown_dark"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

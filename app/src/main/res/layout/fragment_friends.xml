@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context=".HomeBarFragment.FriendsFragment" >
+
+    <Button
+        android:id="@+id/btnSearchPeople"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drw2_btn"
+        android:textColor="@color/brown_dark"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/str_cercaPersone" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/textViewTitle"
+        android:textSize="30sp"
+        android:layout_marginBottom="15dp"
+        android:text="@string/str_listFriends" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <EditText
+            android:id="@+id/editTextFilterFriends"
+            android:background="@drawable/drw_editext"
+            style="@style/editText"
+            android:textSize="15sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/str_FilterHint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnFilterFriends"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnFilterFriends"
+            android:background="@drawable/drw2_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:text="@string/str_Cerca"
+            android:textColor="@color/brown_dark"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextFilterFriends"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editTextFilterFriends" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ListView
+        android:id="@+id/ListViewFriends"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

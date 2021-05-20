@@ -8,6 +8,15 @@
     android:layout_margin="25dp"
     tools:context=".HomeBarFragment.ReadPostFragment" >
 
+    <Button
+        android:id="@+id/btnDeletePost"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/drw3_btn"
+        android:textColor="@color/white"
+        android:text="@string/str_DeletePost" />
     <ImageView
         android:id="@+id/imagePostRead"
         android:layout_width="match_parent"
@@ -16,8 +25,7 @@
         android:src="@drawable/logo"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.4"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
@@ -114,9 +122,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_weight="1.7"
         android:layout_marginBottom="40dp"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="35dp">
 
         <TextView
             android:id="@+id/textDescPostRead"

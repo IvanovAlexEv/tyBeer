@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // ANIMAZIONE APERTURA APP
         LottieBeer.addAnimatorListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator?) {}
             override fun onAnimationEnd(animation: Animator?) {
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         val SoundBeer: MediaPlayer = MediaPlayer.create(this,R.raw.sound_beer)
         SoundBeer.start()
     }
+
+    // APERTURA APP
     fun openHome(){
         val intentHome = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(intentHome)
