@@ -34,7 +34,7 @@ class ReadPostSearchFragment : Fragment() {
         // SETTING DEI DATI DEL POST
         photoPost.setImageBitmap(BitmapFactory.decodeFile(ReadSearchFragment.PhotoPostUS[ReadSearchFragment.SELECTEDSEARCHPOST!!]!!.path))
         postDate.text = postRead.date
-        postAuthor.text = HomeActivity.thisUser!!.nicknameU
+        postAuthor.text = ReadSearchFragment.utenteSelez!!.nicknameU
         if (postRead.star>=1){
             star1.playAnimation()
         }
