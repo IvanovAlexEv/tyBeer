@@ -50,7 +50,7 @@ class SearchFragment : Fragment() {
             }
             listViewSearch.adapter = AdapterUser(requireContext(), listautentiFilter)
             listViewSearch.setOnItemClickListener { parent, view, position, id ->
-                HomeActivity.SELECTEDUSERID = listautenti[position].id
+                HomeActivity.SELECTEDUSERID = listautentiFilter[position].id
                 requireActivity().supportFragmentManager.commit {
                     setReorderingAllowed(true)
                     replace<ReadSearchFragment>(R.id.FragmentContainer).addToBackStack(null)

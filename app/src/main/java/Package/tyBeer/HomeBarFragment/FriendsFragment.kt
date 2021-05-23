@@ -55,7 +55,7 @@ class FriendsFragment : Fragment() {
             }
             listViewFriends.adapter = AdapterUser(requireContext(), listautentiFilterF)
             listViewFriends.setOnItemClickListener { parent, view, position, id ->
-                HomeActivity.SELECTEDUSERID = listautenti[position].id
+                HomeActivity.SELECTEDUSERID = listautentiFilterF[position].id
                 requireActivity().supportFragmentManager.commit {
                     setReorderingAllowed(true)
                     replace<ReadSearchFragment>(R.id.FragmentContainer).addToBackStack(null)
