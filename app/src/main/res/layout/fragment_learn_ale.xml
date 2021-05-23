@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="24dp"
-    tools:context=".LearnFragment.LearnLagerFragment">
+    tools:context=".LearnFragment.LearnAleFragment" >
 
     <TextView
-        android:id="@+id/PercorsoLagerType"
+        android:id="@+id/PercorsoAleType"
         style="@style/Normaltext"
         android:textSize="12sp"
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         android:textColor="@color/brown_dark" />
 
     <TextView
-        android:id="@+id/TitleLagerType"
+        android:id="@+id/TitleAleType"
         style="@style/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:textColor="@color/yellow_dark" />
 
     <TextView
-        android:id="@+id/SubtitleLagerType"
+        android:id="@+id/SubtitleAleType"
         style="@style/Normaltext"
         android:textSize="20sp"
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:textStyle="bold|italic"
-        android:text="@string/LagerBeerSubtitle"
+        android:text="@string/AleBeerSubtitle"
         android:textColor="@color/brown_dark" />
 
     <ScrollView
@@ -44,34 +44,36 @@
         android:layout_marginTop="8dp">
 
         <TextView
-            android:id="@+id/textLagerType"
+            android:id="@+id/textAleType"
             style="@style/Normaltext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/LagerBeerDesc" />
+            android:text="@string/AleBeerDesc" />
 
     </ScrollView>
 
-        <TextView
-            android:id="@+id/textCategory"
-            style="@style/Normaltext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginStart="7dp"
-            android:text="@string/Categorie"
-            android:textSize="20sp"
-            android:textColor="@color/brown_dark"/>
+    <TextView
+        android:id="@+id/textCategory"
+        style="@style/Normaltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginStart="7dp"
+        android:text="@string/Categorie"
+        android:textSize="20sp"
+        android:textColor="@color/brown_dark"/>
+
 
     <ListView
-        android:id="@+id/ListLagerType"
+        android:id="@+id/ListAleType"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:layout_marginTop="14dp">
 
     </ListView>
+
 
 </LinearLayout>

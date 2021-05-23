@@ -14,18 +14,17 @@ import androidx.fragment.app.replace
 
 class LearnMainFragment : Fragment(R.layout.fragment_learn_main) {
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_learn_main, container, false)
         setButton()
-
+        // SETTING DELLA LISTA
         val lista : ListView = v.findViewById(R.id.ListMainType)
         lista.adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, resources.getStringArray(R.array.MainTypeOfBeerList))
         lista.setOnItemClickListener { parent, view, position, id -> openFragment(position) }
-
         return v
     }
 
+    // SETTA LA BARRA DEL MENU'
     fun setButton(){
         val btnHome = requireActivity().findViewById<ImageButton>(R.id.btnBarHome)
         val btnFriends = requireActivity().findViewById<ImageButton>(R.id.btnBarFriends)
@@ -37,6 +36,7 @@ class LearnMainFragment : Fragment(R.layout.fragment_learn_main) {
         btnProfile.setImageResource(R.drawable.ic_bar_profile)
     }
 
+    // SELEZIONE SOTTOCATEGORIA
     private fun openFragment(click: Int) {
         if (click==0){
             requireActivity().supportFragmentManager.commit {
@@ -45,10 +45,22 @@ class LearnMainFragment : Fragment(R.layout.fragment_learn_main) {
             }
         }
         if (click==1){
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<LearnAleFragment>(R.id.FragmentContainer).addToBackStack(null)
+            }
         }
         if (click==2){
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<LearnLambicFragment>(R.id.FragmentContainer).addToBackStack(null)
+            }
         }
         if (click==3){
+            requireActivity().supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                replace<LearnParticularFragment>(R.id.FragmentContainer).addToBackStack(null)
+            }
         }
     }
 }

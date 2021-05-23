@@ -48,13 +48,13 @@
     <string name="str_Unfollow">unfollow</string>
     <string name="str_FilterHint">Nickname\/Name\/Surname\/email</string>
     <string name="str_Cerca">Search</string>
+    <string name="str_Percorso">Path: </string>
 
     <string name="BeerGeneralIntroTitle">Beer…</string>
     <string name="BeerGeneralIntro">A first large subdivision is commonly carried out depending on the type of yeast used, distinguishing between high fermentation beers, the Ale, as the traditional Anglo-Saxon or Belgian, and low fermentation beers, the Lager, where they find place, among others, famous German beers like pils or ambrate bock. We must not forget a third macro category, less known to the average drinker, of spontaneous fermentation beers, such as the extraordinary Belgian Lambic, produced thanks to the action of the yeasts present in the air that attack the sugars of the must left to rest in open tanks.</string>
 
-    <string name="Tipologia">Type: </string>
+    <string name="Categorie">Categories: </string>
     <string name="main">Main</string>
-    <string name="bassaFerm">low fermentation</string>
     <string-array name="MainTypeOfBeerList">
         <item>Lager</item>
         <item>Ale</item>
@@ -67,6 +67,7 @@
     <string name="LambicBeerDesc">In contrast to conventional ale and lager, which are fermented using carefully selected yeast strains for the purpose, lambic is produced by spontaneous fermentation: beer must is exposed to wild yeasts and native bacteria from the Seine Valley, where Brussels is located. This unusual fermentation process gives lambic beers an absolutely distinctive taste: dry, vinous and cider, decidedly acidic. The acidity changes depending on the degree of aging, the alcohol content is around 5%.\nLambic can be consumed alone, but to make it more pleasant the sour taste lends itself to be added to fruit syrups, for example by using raspberries you get the Framboise beer, with the addition of sugar you get the lighthouse, with sour cherries kriek. By mixing various types of lambic of different years, geuze is produced.</string>
     <string name="ParticularBeerDesc">This section is dedicated to those types of beers that are not classifiable are a very precise style.\nIt can be defined as a kind of sub-category, in fact beers with these characteristics can be found both Lager and Ale.</string>
 
+    <string name="LagerBeerSubtitle">Low fermentation</string>
     <string-array name="LagerTypeBeerList">
         <item>Märzen</item>
         <item>Dunkel</item>
@@ -75,6 +76,7 @@
         <item>Pilsner</item>
     </string-array>
 
+    <string name="AleBeerSubtitle">high fermentation</string>
     <string-array name="AleTypeBeerList">
         <item>Pale Ale</item>
         <item>Barley wine</item>
@@ -82,6 +84,12 @@
         <item>Weizen</item>
     </string-array>
 
+    <string name="LambicBeerSubtitle">Spontaneous fermentation</string>
+    <string-array name="LambicTypeBeerList">
+        <item>Gueuze</item>
+    </string-array>
+
+    <string name="ParticularBeerSubtitle">Huge variety …</string>
     <string-array name="ParticularTypeBeerList">
         <item>Rauchbier</item>
         <item>Trappist</item>
